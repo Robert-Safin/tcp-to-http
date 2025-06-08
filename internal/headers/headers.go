@@ -70,3 +70,12 @@ func validTokens(data []byte) bool {
 	}
 	return true
 }
+
+func (h Headers) Get(key string) (string, bool) {
+	lwr := strings.ToLower(key)
+	v, present := h[lwr]
+	if present {
+		return v, true
+	}
+	return "", false
+}
